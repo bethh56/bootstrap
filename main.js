@@ -119,9 +119,49 @@ const duckPrinter = (quacks) => {
     printToDom('duckInfo', domString);
 };
 
+const choseColor = (e) => {
+    const buttonId = e.target.id;
+    const selectedDucks = [];
+    for (let i = 0; i < ducks.length; i++){
+        if(ducks[i].color === buttonId){
+            selectedDucks.push(ducks[i]);
+        }
+    }
+    duckPrinter(selectedDucks);
+};
+
+const choseGender = (e) => {
+    const buttonId = e.target.id;
+    const selectedDucks = [];
+    for (let i = 0; i < ducks.length; i++){
+        if(ducks[i].gender === buttonId){
+            selectedDucks.push(ducks[i]);
+        }
+    }
+    duckPrinter(selectedDucks);
+};
+
+
+
+const choseRubber = () => {
+    console.log('rubber!');
+};
+
+const events = () => {
+    document.getElementById('blue').addEventListener('click', choseColor);
+    document.getElementById('red').addEventListener('click', choseColor);
+    document.getElementById('yellow').addEventListener('click', choseColor);
+    document.getElementById('female').addEventListener('click', choseGender);
+    document.getElementById('male').addEventListener('click', choseGender);
+    document.getElementById('rubber').addEventListener('click', choseRubber);
+};
+
+
+
 const init = () => {
     duckPrinter(ducks);
-}
+    events();
+};
 
 init();
 
